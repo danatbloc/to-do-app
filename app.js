@@ -15,7 +15,10 @@ function onReady() {
 
     let deleteButton = document.createElement('button');
     deleteButton.textContent = "Delete";
-    deleteButton.setAttribute("class", "delete");
+    deleteButton.addEventListener('click', function(){
+      const list = newLi.parentElement;
+      list.removeChild(newLi);
+    });
 
     newLi.textContent = title;
     newLi.appendChild(checkbox);
@@ -25,18 +28,7 @@ function onReady() {
 
     newToDoText.value = '';
 
-    const deleteButtons = document.getElementsByClassName('delete');
-
-    for (var i=0; i < deleteButtons.length; i++) {
-      deleteButtons[i].addEventListener('click',deleteFunction,false)
-    }
   });
-}
-
-let deleteFunction = function(){
-  const lineItem = this.parentElement;
-  const list = lineItem.parentElement;
-  list.removeChild(lineItem);
 }
 
 
