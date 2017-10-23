@@ -13,18 +13,33 @@ function onReady() {
     let checkbox = document.createElement('input');
     checkbox.type = "checkbox";
 
-    newLi.textContent = title;
+    let deleteButton = document.createElement('button');
+    deleteButton.textContent = "Delete";
+    deleteButton.setAttribute("class", "delete");
 
+    newLi.textContent = title;
     newLi.appendChild(checkbox);
+    newLi.appendChild(deleteButton);
 
     toDoList.appendChild(newLi);
 
     newToDoText.value = '';
 
+    const deleteButtons = document.getElementsByClassName('delete');
+
+    for (var i=0; i < deleteButtons.length; i++) {
+      deleteButtons[i].addEventListener('click',deleteFunction,false)
+    }
   });
 }
 
-window.onload = function() {
+let deleteFunction = function(){
+  const lineItem = this.parentElement;
+  const list = lineItem.parentElement;
+  list.removeChild(lineItem);
+}
 
+
+window.onload = function() {
   onReady();
 };
