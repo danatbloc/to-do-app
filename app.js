@@ -4,7 +4,6 @@ function onReady() {
 
   function createNewToDo() {
     const newToDoText = document.getElementById('newToDoText');
-    console.log(newToDoText);
     if (!newToDoText.value) { return; }
 
     toDos.push({
@@ -23,9 +22,17 @@ function onReady() {
       const newLi = document.createElement('li');
       const checkbox = document.createElement('input');
       checkbox.type = "checkbox";
+      const button = document.createElement('button');
+      button.textContent = "Delete";
+      button.addEventListener('click',function(){
+        newLi.remove();
+        const i = toDos.indexOf(toDo);
+        toDos.splice(i,1);
+      })
       newLi.textContent = toDo.title;
       todoList.appendChild(newLi);
       newLi.appendChild(checkbox);
+      newLi.appendChild(button);
     });
   }
 
