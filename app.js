@@ -16,8 +16,7 @@ function onReady() {
     let deleteButton = document.createElement('button');
     deleteButton.textContent = "Delete";
     deleteButton.addEventListener('click', function(){
-      const list = newLi.parentElement;
-      list.removeChild(newLi);
+      newLi.remove();
     });
 
     newLi.textContent = title;
